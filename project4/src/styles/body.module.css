@@ -1,0 +1,86 @@
+/* Full Page Background */
+.body {
+  background-image: url("../assets/backImage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); /* Responsive grid */
+  gap: 20px;
+  padding: 20px;
+  font-size: 14px;
+  color: white;
+  justify-content: center;
+}
+
+/* Card Styling */
+.m_b {
+  max-width: 320px;
+  max-height: 200px;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Light border for glassmorphism */
+  border-radius: 12px;
+  backdrop-filter: blur(12px); /* Stronger blur effect */
+  background: rgba(255, 255, 255, 0.1); /* Slight transparency */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.m_b:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Inner Layout */
+.m_b_i {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Image Styling */
+.m_b_i_l img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+/* Right Section Layout */
+.m_b_i_r {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding-left: 10px;
+}
+/* Title */
+.item_title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.m_b_i_r_d{
+  text-align:end;
+}
+/* Button */
+.m_b_i_r_d button {
+  background: rgba(227, 10, 10, 0.868);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.m_b_i_r_d button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
