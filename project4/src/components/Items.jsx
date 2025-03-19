@@ -13,6 +13,7 @@ function reducer(state, action) {
       );
 
     case "decrement":
+    case "bought":
       if (state.some((item) => item.name === action.title && item.count <= 1)) {
         localStorage.removeItem(action.title);
         return state.filter((item) => item.name !== action.title);
@@ -23,12 +24,6 @@ function reducer(state, action) {
           : item
       );
 
-    case "bought":
-      return state.map((item) =>
-        item.name == action.title
-          ? { ...item, count: item.count - action.payload }
-          : item
-      );
     case "delete_values":
       return state.filter((item) => item.name != action.title);
   }
@@ -36,21 +31,46 @@ function reducer(state, action) {
 const Items = () => {
   const [state, dispatch] = useReducer(reducer, []);
   useEffect(() => {
-    let keys = Object.keys(localStorage);
-    let values = keys.map((key) => localStorage.getItem(key));
+    let key = Object.keys(localStorage);
+    let keys = key.filter((k) => k !== "purchase");
+
+    let values = keys.map((key) => {
+      try {
+        return JSON.parse(localStorage.getItem(key));
+      } catch {
+        return localStorage.getItem(key);
+      }
+    });
+
     dispatch({ type: "set_values", payload: values });
-  }, []);
+  }, [state.length]);
   function handle(data) {
     localStorage.removeItem(data);
     dispatch({ type: "delete_values", title: data });
   }
   function buy(name) {
     alert(`${name} bought successfully`);
-    let arr = JSON.parse(localStorage.getItem("purchase")) || [];
-    arr.push(name);
-    localStorage.setItem("purchase", JSON.stringify(arr));
+
+    let storedData = localStorage.getItem("purchase");
+    let arr = [];
+
+    if (storedData) {
+      try {
+        arr = JSON.parse(storedData);
+      } catch (error) {
+        console.error("Error parsing localStorage data:", error);
+        arr = [];
+      }
+    }
+
+    if (!arr.includes(name)) {
+      arr.push(name);
+      localStorage.setItem("purchase", JSON.stringify(arr));
+    }
+
     dispatch({ type: "bought", title: name, payload: 1 });
   }
+
   return (
     <div className={styles.item_container}>
       {state.length > 0 ? (
