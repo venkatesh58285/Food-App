@@ -1,10 +1,12 @@
+import Cart from "./Cart";
+import History from "./History";
 import { useState } from "react";
 import styles from "../styles/navbar.module.css";
-export default function Navbar({ setType,val,setInterval }) {
-  
-
+export default function Navbar({ setType, val, setInterval }) {
   return (
     <div className={styles.nav}>
+      <History/>
+      <Cart />
       <div className={styles.nav_head}>
         <h1>Foody Zone</h1>
         <input

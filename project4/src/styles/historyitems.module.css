@@ -1,0 +1,18 @@
+.itemContainer{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border:1px solid black;
+    background:lightgray;
+    align-items:flex-start;
+}
+.item p{
+    padding:8px 12px;
+    width:600px;
+    text-align:center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bolder;
+    font-size:large;
+    border:2px solid grey;
+    background:lightcyan
+}

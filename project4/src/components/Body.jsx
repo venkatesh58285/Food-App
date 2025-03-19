@@ -27,6 +27,10 @@ export default function Body({ type, val }) {
     let regex = new RegExp(val, "i");
     return regex.test(item.title);
   });
+  function handle_cart({ item }) {
+    localStorage.setItem(item.title, item.title);
+    alert("Item Added TO Cart");
+  }
   return (
     <div className={styles.body}>
       {dataRequired.length > 0 ? (
@@ -45,8 +49,8 @@ export default function Body({ type, val }) {
                   </p>
                 </div>
                 <div className={styles.m_b_i_r_d}>
-                  <button>
-                    {item?.nutrition?.nutrients?.[0]?.amount || "$10"}
+                  <button onClick={() => handle_cart({ item })}>
+                    Add To Cart
                   </button>
                 </div>
               </div>

@@ -1,7 +1,10 @@
 .nav {
   max-width: 1440px;
+  width: 100%;
   height: 220px;
   background-color: #323334;
+  position: relative;
+  margin: 0;
 }
 .nav_head {
   color: white;
@@ -38,4 +41,36 @@
   color: white;
   background-color: #ff4343;
   border-radius: 5px;
+}
+.history {
+  all: unset;
+  color:blue;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border:2px solid grey;
+  border-radius:4px;
+  background:whitesmoke;
+  padding:4px 8px;
+  position:absolute;
+  top:14px;
+  right:50px;
+  transition:transform ease-in 2ms;
+}
+.cart {
+  all: unset;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  max-width: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background: white;
+  transition: all ease-in 2ms;
+}
+.cart img {
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+}
+.cart:hover,.history:hover {
+  transform: scale(1.1);
 }
